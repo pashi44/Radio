@@ -1,0 +1,1 @@
+A Zephyr thread’s stack isn’t just a simple buffer — depending on config, it may include reserved areas, guard pages, alignment rules, and even a second kernel stack. Because of this, you must always use Zephyr’s stack macros or APIs to create stacks, not raw arrays.

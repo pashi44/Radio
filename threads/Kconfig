@@ -1,0 +1,8 @@
+menu "Radio Threads K  Configuration"
+config   RADIO_THREADS
+bool "the value for manual timer config"
+default n
+
+
+
+endmenu

@@ -1,1 +1,9 @@
 A Zephyr thread’s stack isn’t just a simple buffer — depending on config, it may include reserved areas, guard pages, alignment rules, and even a second kernel stack. Because of this, you must always use Zephyr’s stack macros or APIs to create stacks, not raw arrays.
+Because of this, portable code can’t simply pass an arbitrary character buffer to k_thread_create(). Special macros exist to instantiate stacks statically, prefixed with K_KERNEL_STACK and K_THREAD_STACK.
+
+Additionally, stacks may be instantiated dynamically using k_thread_stack_alloc() and subsequently freed with k_thread_stack_free().
+
+k_thread_stack_alloc is used for  usersapce enabled threads or else k_kernel_stack_alloc
+for non-ser mode
+
+

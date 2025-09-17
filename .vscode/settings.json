@@ -4,5 +4,9 @@
     "files.associations": {
         "*.dbclient-js": "javascript",
         "mutex": "cpp"
-    }
+    },
+    "cmake.ignoreCMakeListsMissing": true,
+    "cmake.configureOnOpen": false,
+    "cmake.enableAutomaticKitScan": false,
+    "cmake.sourceDirectory": "${workspaceFolder}/nonexistent"
 }

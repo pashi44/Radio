@@ -18,6 +18,17 @@ bool alloc_dynamic_stack(size_t size_bytes, uint32_t flags /* 0 or K_USER */);
 /* Call after join/finish */
 void free_dynamic_stack(void);
 
+
+
+
+
+
+struct datapass {
+    const char *name;
+    int         age;
+};
+
+
 #ifdef __cplusplus
 }
 #endif

@@ -7,3 +7,28 @@ k_thread_stack_alloc is used for  usersapce enabled threads or else k_kernel_sta
 for non-ser mode
 
 
+Thread OPtions
+---------------
+0 for default
+
+K_ESSENTIAL - if this option fails,treat   it has critical failure
+
+K_SSE_REGS |  k_FPU_REGS -  tells the kernel to use FPU registrs
+
+K_USER
+If CONFIG_USERSPACE is enabled, this thread will be created in user
+ mode and will have reduced privileges.
+
+ K_INHERIT_PERMS-If CONFIG_USERSPACE is enabled, this thread will inherit all kernel object
+ permissions that the parent thread had, except the parent thread object.
+
+
+
+
+Thread_custom data
+-------------------
+Custom data support is not available to ISRs because
+they operate within a single shared kernel interrupt handling context.
+
+CONFIG_THREAD_CUSTOM_DATA=y has to be eneabled in prj.cnf
+

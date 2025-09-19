@@ -2,19 +2,12 @@
 #include "ThreadOne.hpp"
 #include "threadone_heap.hpp"
 
-
-
-
-
-
-
-
 //
 
 // K_THread_STACK_DEFINE(t1_stack, 1024);
 
-K_THREAD_STACK_DEFINE(t1_stack, 1024);
-K_THREAD_STACK_DEFINE(t2_stack, 1024);
+K_KERNEL_STACK_DEFINE(t1_stack, 1024);
+K_KERNEL_STACK_DEFINE(t2_stack, 1024);
 
 struct k_thread thread_one;
 struct k_thread thread_two;
@@ -26,40 +19,15 @@ struct k_thread thread_three_dynamic;
 
 volatile int shared_variable = 0;
 
-extern "C" void thread_entry_point(  void *arg1, void *, void *)
+extern "C" void thread_entry_point(void *, void *, void *)
 {
-    // Only set and use custom data if arg1 is not null
-    if (arg1 != nullptr) {
-       k_thread_custom_data_set(arg1);
-    } else {
-        k_thread_custom_data_set(nullptr);
-    }
 
-    datapass *retrieved_ctx = (datapass *)k_thread_custom_data_get();
+	for (int i = 0; i < 1000000; i++) {
+		++shared_variable;
 
-
-printk("Thread ID: %d, Name: %s\n",
-	retrieved_ctx->age,
-	retrieved_ctx->name);
-
-
-    // Protect against null dereference
-//     if (retrieved_ctx != nullptr) {
-        // for (int i = 0; i < 10000; i++) {
-        //     ++shared_variable;
-
-//
-	// }
-// }else {
-	// printk("No thread-specific data set for this thread.\n");
-// }
-
-k_msleep(100);
-while(1)
-k_usleep(20);
-
+k_yield();
+	}
 }
-
 
 extern "C" k_thread_stack_t *get_t1_stack()
 {

@@ -3,7 +3,8 @@
     "idf.pythonInstallPath": "/usr/bin/python3",
     "files.associations": {
         "*.dbclient-js": "javascript",
-        "mutex": "cpp"
+        "mutex": "cpp",
+        "atomic": "cpp"
     },
     "cmake.ignoreCMakeListsMissing": true,
     "cmake.configureOnOpen": false,

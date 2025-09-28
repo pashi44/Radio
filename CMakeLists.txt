@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.20.0)
 
 set(BOARD esp32_devkitc/esp32/procpu)
+
+set(DTC_OVERLAY_FILE boards/xtensa/Radio_esp32.overlay)
 find_package(Zephyr REQUIRED HINTS $ENV{ZEPHYR_BASE})
 
 project(radio_app)

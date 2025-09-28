@@ -1,0 +1,12 @@
+ /*
+     #define BT_DATA_BYTES(_type, _bytes...) \
+   BT_DATA(_type, ((uint8_t []) { _bytes }), \
+sizeof((uint8_t []) { _bytes }))
+  sot the   variadic macro  (...)  or elipsis is passed with any  number of args  after bytes
+
+thisnconverted as   cast to  uint8_t array
+
+
+*/
+
+

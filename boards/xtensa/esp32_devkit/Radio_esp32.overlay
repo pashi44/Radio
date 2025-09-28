@@ -1,0 +1,46 @@
+/dts-v1/;
+
+/ {
+    #address-cells = <1>;
+    #size-cells = <1>;
+
+    chosen {
+        zephyr,console = &uart0;
+        zephyr,shell-uart = &uart0;
+    };
+
+    aliases {
+        uart-0 = &uart0;
+        uart-1 = &uart1;
+    };
+
+         dummy_node: dummy-node {
+        compatible = "zephyr,dummy";
+        status = "okay";
+        foo = <123>;
+        bar = "hello";
+    };
+};
+
+/* Pinctrl configuration for UART1 */
+&pinctrl {
+    uart1_default: uart1_default {
+        group1 {
+            pinmux = <UART1_TX_GPIO5>,
+                     <UART1_RX_GPIO18>,
+                     <UART1_RTS_GPIO19>;
+        };
+        group2 {
+            pinmux = <UART1_CTS_GPIO23>;
+            bias-pull-up;
+        };
+    };
+};
+
+/* UART1 node */
+&uart1 {
+    status = "okay";
+    current-speed = <921600>;
+    pinctrl-0 = <&uart1_default>;
+    pinctrl-names = "default";
+};

@@ -1,11 +1,9 @@
+# threads/CMakeLists.txt
 
+zephyr_library()
 
 if(CONFIG_RADIO_THREADS)
-  target_sources(app PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/ThreadOne.cpp
-  )
+  zephyr_library_sources(ThreadOne.cpp)
 endif()
 
-target_include_directories(app PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/include
-)
+zephyr_include_directories(include)

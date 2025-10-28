@@ -1,8 +1,9 @@
-menu "Radio Threads K  Configuration"
-config   RADIO_THREADS
-bool "the value for manual timer config"
-default n
+menu "Radio Threads Options"
 
-
+config RADIO_THREADS
+    bool "Enable Radio Threads"
+    default y
+    help
+      Enable the thread module used by the Radio app.
 
 endmenu

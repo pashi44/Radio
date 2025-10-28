@@ -1,5 +1,6 @@
-name:     Radio_threads
-version:  1.0.0
+name: threads
+version: 0.1.0
+description: Thread management module for Radio app
 build:
   cmake: .
-  kconfig  :  Kconfig
+  kconfig: Kconfig

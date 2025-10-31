@@ -1,3 +1,4 @@
 mainmenu  "Radio  ESP32"
     source "Kconfig.zephyr"
     rsource "threads/Kconfig"
+    rsource "interrupts/Kconfig"

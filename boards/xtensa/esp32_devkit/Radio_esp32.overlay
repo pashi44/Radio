@@ -1,27 +1,59 @@
-
-/ {
+/{
     #address-cells = <1>;
     #size-cells = <1>;
-
+    
+    
     chosen {
         zephyr,console = &uart0;
         zephyr,shell-uart = &uart0;
     };
 
+    
     aliases {
+        
+        sw0 = &gpio2_interrupt_pin; 
+        mygpio = &gpio2_interrupt_pin;
+
+        
         uart-0 = &uart0;
         uart-1 = &uart1;
     };
 
-         dummy_node: dummy-node {
+    
+    dummy_node: dummy-node {
         compatible = "zephyr,dummy";
         status = "okay";
         foo = <123>;
         bar = "hello";
     };
+    
+    
+    keys: keys {
+        compatible = "gpio-keys";        
+        
+        gpio2_interrupt_pin: button_0 {
+            label = "GPIO 2 Interrupt Pin (sw0)";
+            
+            gpios = <&gpio0 2 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+        };
+    };
+    
+    
+    
+    leds: leds {
+        compatible = "gpio-leds";
+
+        
+        led_17: led_17 {
+            label = "Custom LED 17 Output";
+            
+            
+            
+            gpios = <&gpio0 17 GPIO_ACTIVE_LOW>; 
+        };
+    };
 };
 
-/* Pinctrl configuration for UART1 */
 &pinctrl {
     uart1_default: uart1_default {
         group1 {
@@ -36,7 +68,6 @@
     };
 };
 
-/* UART1 node */
 &uart1 {
     status = "okay";
     current-speed = <921600>;

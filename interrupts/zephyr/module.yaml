@@ -1,0 +1,6 @@
+name: interrupts
+version: 0.1.0
+description: interrupts  manuall yconfigured here
+build:
+  cmake: .
+  kconfig: Kconfig

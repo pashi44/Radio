@@ -1,0 +1,4 @@
+#include "Interrupt.hpp"
+
+
+LOG_MODULE_REGISTER(INTERRUPTS_LOG, LOG_LEVEL_DBG);

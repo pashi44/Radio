@@ -6,6 +6,17 @@
                 "${workspaceFolder}/**",
                 "${workspaceFolder}/../*",
                 "${workspaceFolder}/../../zephyr/**"
+                
+                ,
+
+                "${workspaceFolder}/../../zephyr/include/**",
+                "${workspaceFolder}/../../zephyr/include/*",
+
+                "${workspaceFolder}/../../zephyr/include/zephyr/*",
+
+                "${workspaceFolder}/../../zephyr/drivers/interrupt_controller/*",
+
+
             ],
             "defines": [],
             "compilerPath": "/usr/bin/clang",

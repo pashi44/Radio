@@ -1,0 +1,9 @@
+menu "Radio  interrupts"
+
+config RADIO_INTERRUPTS
+    bool "Enable Radio Threads"
+    default y
+    help
+      Enable the  Interrupts module used by the Radio app.
+
+endmenu

@@ -1,28 +1,30 @@
-#include  <zephyr/kernel.h>
-#include  <iostream>
+#include <zephyr/kernel.h>
+#include <iostream>
+#include <algorithm>
+#include <zephyr/device.h>
+#include <zephyr/devicetree.h>
 
+#include <zephyr/logging/log.h>
+LOG_MODULE_REGISTER(main, CONFIG_LOG_DEFAULT_LEVEL);
 
-extern "C" void call_c();
+#define UART1_CONSOLE DT_ALIAS(serial1)
 
+const  struct device *uart_dev1= DEVICE_DT_GET(UART1_CONSOLE);
+using namespace std;
+int main()
+{
 
- using namespace  std;
-  int main(){
-
-    call_c();
-
-
-    return  0;
+  if (!device_is_ready(uart_dev1)) {
+    LOG_ERR("UART device not ready");
+    return -ENODEV;
+  }else {
+    LOG_INF("UART device is ready");
   }
 
+	while (1) {
 
-  extern "C"   void call_c(){
+		k_msleep(1000);
+	}
 
-  cout << "in the c  func "  <<  endl;
-
-while(1){
-    k_msleep(1000);
+	return 0;
 }
-
-
-
-  }

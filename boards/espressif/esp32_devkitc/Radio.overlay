@@ -1,0 +1,33 @@
+/ {
+
+
+    aliases {
+        serial1 = &uart1;
+    };
+    soc {
+        #address-cells = <1>;
+        #size-cells = <1>;
+
+        uart0: uart@3ff40000 {
+            compatible = "espressif,esp32-uart";
+            reg = <0x3ff40000 0x1000>;
+ status = "okay";
+            pinctrl-0 = <&uart0_default>;
+            pinctrl-names = "default";
+            
+        };
+    };
+};
+
+
+
+
+
+&uart1{
+  compatible = "espressif,esp32-uart";
+reg = <0x3ff50000 0x1000>;
+  status = "okay";
+  current-speed= <115200>;
+  pinctrl-0 = <&uart1_default>;
+  pinctrl-names = "default";
+};

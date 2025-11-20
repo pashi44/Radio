@@ -3,7 +3,13 @@
 #include <zephyr/devicetree.h>
 #include <zephyr/drivers/uart.h>
 #include <zephyr/logging/log.h>
+
+
 #include "uart.hpp"
+
+// #ifdef CONFIG_RADIO_UART_INSTANCE
+// #endif   //UART
+
 
 LOG_MODULE_REGISTER(main, CONFIG_LOG_DEFAULT_LEVEL);
 

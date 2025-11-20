@@ -1,0 +1,9 @@
+menu "Radio UART Driver"
+
+config RADIO_UART_INSTANCE
+    bool "Enable Radio UART Driver"
+    default n
+    help
+      Enable the Radio UART driver instance for the Radio project.
+
+endmenu

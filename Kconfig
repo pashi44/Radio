@@ -1,3 +1,6 @@
-mainmenu   "Radio ESP32"
-    source  "Kconfig.zephyr"
-    rsource "drivers/uart/Kconfig.uart"
+
+menu "radio  device drivers"
+
+    source "Kconfig"
+    rsource "drivers/uart/Kconfig"
+endmenu

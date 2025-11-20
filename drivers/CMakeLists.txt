@@ -1,3 +1,4 @@
-add_subdirectory_ifdef( CONFIG_MAN_DRIVER_UART  
+# add_subdirectory_ifdef(CONFIG_RADIO_UART_INSTANCE  PUBLIC  uart)
 
-${CMAKE_CURRENT_SOURCE_DIR}/uart)
+
+add_subdirectory(uart)

@@ -1,7 +1,8 @@
+# This declares a Zephyr library for your UART driver
 zephyr_library()
-# Header-only: add this directory to the include path so `uart.hpp` can be used
+
+# Only compile the optional C++ source if the driver instance is enabled
+zephyr_library_sources_ifdef(CONFIG_RADIO_UART_INSTANCE uart.cpp)
+
+# Export the headers under "include/" to consumers of this library
 zephyr_library_include_directories(include)
-
-zephyr_library_sources_ifdef(CONFIG_MAN_DRIVER_UART 
-
-${CMAKE_CURRENT_SOURCE_DIR}/uart.cpp)

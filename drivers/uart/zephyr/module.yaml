@@ -1,4 +1,13 @@
-name:   uart_manual_driver
+name: radio_uart
 build:
+  # cmake: true
   cmake: .
   kconfig: Kconfig
+
+# exports:
+#   include:
+#     - ../include
+
+# maintainers:
+#   - name: pashi
+#     email: pashireddi@gmail.com

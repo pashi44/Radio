@@ -1,3 +1,4 @@
+
 / {
 
 
@@ -7,19 +8,31 @@
     soc {
         #address-cells = <1>;
         #size-cells = <1>;
-
-        uart0: uart@3ff40000 {
+    };
+  };
+       
+  &uart0 {
             compatible = "espressif,esp32-uart";
             reg = <0x3ff40000 0x1000>;
- status = "okay";
-            pinctrl-0 = <&uart0_default>;
-            pinctrl-names = "default";
-            
+            status = "okay";
+            // pinctrl-0 = <&uart0_default>;
+
+                                // pinctrl-names = "default";
         };
-    };
-};
+// pinctrl : pin-controller {
+//     uart0_default: uart0_default {
+//         pins = "GPIO1", "GPIO3";
+//         function = "uart";
+//         bias-pull-up;
+//     };
 
+//      uart1_default: uart1_default {
+//          pins = "GPIO9", "GPIO10";
+//       function = "uart";
+//          bias-pull-up; 
+//  };
 
+//   };
 
 
 
@@ -28,6 +41,11 @@
 reg = <0x3ff50000 0x1000>;
   status = "okay";
   current-speed= <115200>;
-  pinctrl-0 = <&uart1_default>;
-  pinctrl-names = "default";
+  // pinctrl-0 = <&uart1_default>;
+  // pinctrl-names = "default";
+};
+&uart2{
+  compatible = "espressif,esp32-uart";
+reg = <0x3ff6e000 0x1000>;
+status= "okay";
 };

@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.20.0)
 
 set(BOARD esp32_devkitc/esp32/procpu)
-set(DTC_OVERLAY_FILE boards/xtensa/esp32_devkit/Radio_esp32.overlay)
+set(DTC_OVERLAY_FILE boards/espressif/esp32_devkitc/Radio.overlay)
 
-
+# set(CMAKE_MAKE_PROGRAM  Ninja)
 # list(APPEND $ENV{ZEPHYR_EXTRA_MODULES}
 # #  ${CMAKE_CURRENT_SOURCE_DIR}/interrupt
 # #   ${CMAKE_CURRENT_SOURCE_DIR}/threads

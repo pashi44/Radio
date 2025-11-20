@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <zephyr/device.h>
 #include <zephyr/devicetree.h>
-
+#include  <zephyr/drivers/uart.h>
 #include <zephyr/logging/log.h>
 LOG_MODULE_REGISTER(main, CONFIG_LOG_DEFAULT_LEVEL);
 
@@ -20,6 +20,9 @@ int main()
   }else {
     LOG_INF("UART device is ready");
   }
+
+
+   uart_poll_out(uart_dev1,   'p');
 
 	while (1) {
 

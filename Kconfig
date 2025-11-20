@@ -1,2 +1,2 @@
-mainmenu  "Radio  ESP32"
-    source "Kconfig.zephyr"
+mainmenu   "Radio ESP32"
+    source  "Kconfig.zephyr"

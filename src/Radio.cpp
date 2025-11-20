@@ -29,10 +29,19 @@ int main(void)
     }
 
     LOG_INF("Starting UART TX on UART1 and RX on UART2");
+    unsigned char tx[] =   {'p', 'r','a', 's', 'h','i', '\n'};
+
+    // unsigned char* tx  = "prashanth";
+size_t len = sizeof(tx) / sizeof(tx[0]);
 
     while (true) {
-        unsigned char tx = 'p';
-        uart_poll_out(uart_dev1, tx);   // void function, no ret value
+
+
+for (size_t i = 0; i < len; i++) {
+        uart_poll_out(uart_dev1, tx[i]);
+        k_msleep(50);
+    }
+
 
         unsigned char rx;
         int ret = uart_poll_in(uart_dev2, &rx);

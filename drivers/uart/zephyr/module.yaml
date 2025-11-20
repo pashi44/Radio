@@ -1,0 +1,4 @@
+name:   uart_manual_driver
+build:
+  cmake: .
+  kconfig: Kconfig

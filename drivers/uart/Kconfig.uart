@@ -1,0 +1,3 @@
+config MAN_DRIVER_UART
+    bool "Enable manual defined UART driver instance"
+    default  n

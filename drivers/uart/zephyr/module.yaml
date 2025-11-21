@@ -2,7 +2,7 @@ name: radio_uart
 build:
   # cmake: true
   cmake: .
-  kconfig: Kconfig
+  kconfig: drivers/Kconfig
 
 # exports:
 #   include:

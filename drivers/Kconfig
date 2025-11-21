@@ -1,0 +1,5 @@
+menu "Radio device drivers"
+
+rsource "uart/Kconfig.uart"
+
+endmenu

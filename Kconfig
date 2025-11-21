@@ -1,6 +1,4 @@
 
 menu "radio  device drivers"
-
-    source "Kconfig"
-    rsource "drivers/uart/Kconfig"
+    # rsource "drivers/Kconfig"
 endmenu

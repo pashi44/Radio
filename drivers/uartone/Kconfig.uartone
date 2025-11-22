@@ -1,0 +1,6 @@
+config  RADIO_UART_INSTANCE
+  bool "Enable Radio UART  manual  Driver  instance"
+  default n
+  help
+      Enable this option to use the manual UART driver instance for Radio communication.
+      

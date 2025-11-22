@@ -22,4 +22,3 @@ target_sources(app  PRIVATE
 
 
 
-add_subdirectory(drivers)

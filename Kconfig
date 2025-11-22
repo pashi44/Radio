@@ -1,3 +1,4 @@
 mainmenu "Radio Kconfig configuration"
 
-    source 'drivers/Kconfig'
+    rsource "drivers/Kconfig"
+    source  "Kconfig.zephyr"

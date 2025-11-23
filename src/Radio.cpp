@@ -4,11 +4,14 @@
 #include <zephyr/drivers/uart.h>
 #include <zephyr/logging/log.h>
 
-#ifdef CONFIG_RADIO_UART_INSTANCE
-#include "uart.hpp"
+#ifdef  CONFIG_RADIO_UART_INSTANCE
+#include "uartone.hpp"
+#endif // DEBUG
+
+
+#ifdef __cplusplus__
+ extern "C" {
 #endif
-
-
 
 LOG_MODULE_REGISTER(main, CONFIG_LOG_DEFAULT_LEVEL);
 
@@ -62,3 +65,11 @@ for (size_t i = 0; i < len; i++) {
 
     return 0;
 }
+
+
+#ifdef __cplusplus__
+
+ }
+#endif
+
+

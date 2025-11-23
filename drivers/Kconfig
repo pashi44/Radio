@@ -1,5 +1,5 @@
 menu "Radio drivers"
 
-    rsource "uartone/Kconfig.uartone"
+    rsource "uartone/Kconfig"
 
 endmenu

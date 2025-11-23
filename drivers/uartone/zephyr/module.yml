@@ -1,5 +1,5 @@
-name: radio_uart
+name: uartone
 
 build:
-  cmake: ..
-  kconfig: Kconfig.uartone
+  cmake: .
+  kconfig: Kconfig

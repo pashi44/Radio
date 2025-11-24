@@ -13,7 +13,6 @@ const    struct device *uart_dev1 = DEVICE_DT_GET(UART1_node);
 
 
 
-
    uint8_t  uartone_init(){
 
 

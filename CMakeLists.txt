@@ -6,6 +6,7 @@ set(DTC_OVERLAY_FILE boards/espressif/esp32_devkitc/Radio.overlay)
 # set(ZEPHYR_RADIOUART_CMAKE_DIR ${CMAKE_CURRENT_LIST_DIR}/drivers/uartone)
 # set(ZEPHYR_RADIOUART_KCONFIG   ${CMAKE_CURRENT_LIST_DIR}/drivers/uartone)
 # 
+
 list(APPEND ZEPHYR_EXTRA_MODULES
 
 

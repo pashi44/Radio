@@ -1,0 +1,5 @@
+config   BINZ_ITWOC
+    bool "Enable ItwoC Radio manual BINZ Driver"
+    default n
+
+

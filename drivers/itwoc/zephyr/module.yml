@@ -1,0 +1,5 @@
+name: binz_i2c
+build:
+  cmake: .
+  kconfig: Kconfig
+    

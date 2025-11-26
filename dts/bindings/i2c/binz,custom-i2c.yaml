@@ -1,12 +1,20 @@
-description:  mycustom i2c binding of Binz vendor
+description: Custom I2C Controller Binding for ESP32 by Binz Vendor
 compatible: "binz,custom-i2c"
-include: /home/hadoop/zephyresp/zephyr/dts/bindings/i2c/espressif,esp32-i2c.yaml
-
+include: espressif,esp32-i2c.yaml 
 
 properties:
-  clock-frequency:
+  reg:
+    type: array
+    required: true
+
+  "#address-cells":
     type: int
-    description: "Clock frequency for I2C bus in Hertz"
-    minimum: 10000
-    maximum: 400000
-    default: 100000
+    description: "Must be 1 cell for I2C 7-bit addressing."
+  "#size-cells":
+    type: int
+    description: "Must be 0 cells for I2C."
+child-binding:
+  properties:
+    custom-id:
+      type: string
+      description: A custom identifier for the I2C child device.

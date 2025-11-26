@@ -1,5 +1,6 @@
 menu "Radio drivers"
 
     rsource "uartone/Kconfig"
+    rsource "itwoc/Kconfig"
 
 endmenu

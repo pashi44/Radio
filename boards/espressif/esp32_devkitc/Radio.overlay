@@ -1,61 +1,51 @@
-
 / {
-
-
+    // Defines aliases for easy referencing in application code
     aliases {
         serial1 = &uart1;
     };
-    soc {
-        #address-cells = <1>;
-        #size-cells = <1>;
-    };
-  };
-       
-  &uart0 {
-            compatible = "espressif,esp32-uart";
-            reg = <0x3ff40000 0x1000>;
-            status = "okay";
-            label = "serial-UART0";
-            // pinctrl-0 = <&uart0_default>;
+    
 
-                                // pinctrl-names = "default";
+  #address-cells = <1>; 
+        #size-cells = <0>;
+
+    i2c0_binz: i2c-controller@3FF53000 {
+        compatible = "binz,custom-i2c";
+        status = "okay";
+        reg = <0x3FF53000 0x1000>;
+        
+        pinctrl-0 = <&i2c0_default>; 
+        pinctrl-names = "default";
+        #address-cells = <1>; 
+        #size-cells = <0>;
+      
+
         };
-// pinctrl : pin-controller {
-//     uart0_default: uart0_default {
-//         pins = "GPIO1", "GPIO3";
-//         function = "uart";
-//         bias-pull-up;
-//     };
-
-//      uart1_default: uart1_default {
-//          pins = "GPIO9", "GPIO10";
-//       function = "uart";
-//          bias-pull-up; 
-//  };
-
-//   };
+    };
 
 
 
-&uart1{
-  compatible = "espressif,esp32-uart";
-reg = <0x3ff50000 0x1000>;
+    &uart0 {
+        compatible = "espressif,esp32-uart";
+        reg = <0x3ff40000 0x1000>;
+        status = "okay";
+        label = "serial-UART0";
+    };
 
+    &uart1 {
+        compatible = "espressif,esp32-uart";
+        reg = <0x3ff50000 0x1000>;
+        status = "okay";
+        label = "serial-UART1";
+        current-speed= <115200>;
+        pinctrl-0 = <&uart1_default>; // Assumes 'uart1_default' is defined elsewhere
+        pinctrl-names = "default";
+    };
 
-  status = "okay";
-label = "serial-UART1";
-  current-speed= <115200>;
-  pinctrl-0 = <&uart1_default>;
-  pinctrl-names = "default";
-
-
-};
-&uart2{
-  compatible = "espressif,esp32-uart";
-reg = <0x3ff6e000 0x1000>;
-status= "okay";
-  pinctrl-0 = <&uart2_default >;
-  pinctrl-names = "default";
-
-
-};
+    &uart2 {
+        compatible = "espressif,esp32-uart";
+        reg = <0x3ff6e000 0x1000>;
+        status= "okay";
+        label = "serial-UART2";
+        pinctrl-0 = <&uart2_default>; // Assumes 'uart2_default' is defined elsewhere
+        pinctrl-names = "default";
+    };

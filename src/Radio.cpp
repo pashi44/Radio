@@ -6,8 +6,11 @@
 
 #ifdef  CONFIG_RADIO_UART_INSTANCE
 #include "uartone.hpp"
+
 #endif // DEBUG
 
+
+#include "Binzitwoc.hpp"
 
 #ifdef __cplusplus__
  extern "C" {
@@ -15,37 +18,20 @@
 
 LOG_MODULE_REGISTER(main, CONFIG_LOG_DEFAULT_LEVEL);
 
-
+const char* i2c_data= "Data fro mbinz itwoc driver\n";
 
 int main(void)
 {
   
 
 uartone_init();
+binzitwoc_init();
 
     
-    LOG_INF("Starting UART TX on UART1 and RX on UART2");
-    unsigned char tx[] =   {'p', 'r','a', 's', 'h','i', '\n'};
-
-    // unsigned char* tx  = "prashanth";
-size_t len = sizeof(tx) / sizeof(tx[0]);
-
     while (true) {
 
 
-for (size_t i = 0; i < len; i++) {
-        uart_poll_out(uart_dev1, tx[i]);
-        k_msleep(50);
-    }
-
-
-        unsigned char rx;
-        int ret = uart_poll_in(uart_dev2, &rx);
-        if (ret == 0) {
-            printk("UART2 RX: '%c' (0x%02x)\n",
-                   (rx >= 32 && rx <= 126) ? rx : '.',
-                   rx);
-        }
+int ret = i2c_write(i2c0_dev, (const uint8_t*)i2c_data, strlen(i2c_data), 0x40);
 
         k_msleep(5);
     }

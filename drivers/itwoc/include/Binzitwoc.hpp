@@ -11,12 +11,14 @@ extern "C" {
 
 extern const char *i2c_data;
 
-typedef uint8_t (*status)(const struct device *dev);
+typedef int (*status)(const struct device *dev);
 
-typedef uint8_t (*binz_configure)(const struct device *dev);
+typedef int (*binz_configure)(const struct device *dev);
 //  typedef    uint8_t    (*get_status)(const  struct device *dev);
 
-__subsystem struct binz_i2c_public_api {
+
+
+struct binz_i2c_public_api {
 	status get_status;
 	binz_configure configure;
 };

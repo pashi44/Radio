@@ -25,13 +25,12 @@ int main(void)
   
 
 uartone_init();
-binzitwoc_init();
 
     
     while (true) {
 
 
-int ret = i2c_write(i2c0_dev, (const uint8_t*)i2c_data, strlen(i2c_data), 0x40);
+// int ret = i2c_write(i2c0_dev, (const uint8_t*)i2c_data, strlen(i2c_data), 0x40);
 
         k_msleep(5);
     }

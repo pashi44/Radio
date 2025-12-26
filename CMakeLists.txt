@@ -10,8 +10,8 @@ set(DTC_OVERLAY_FILE boards/espressif/esp32_devkitc/Radio.overlay)
 list(APPEND ZEPHYR_EXTRA_MODULES
 
 
-${CMAKE_CURRENT_SOURCE_DIR}/drivers/uartone 
-${CMAKE_CURRENT_SOURCE_DIR}/drivers/itwoc
+# ${CMAKE_CURRENT_SOURCE_DIR}/drivers/uartone 
+# ${CMAKE_CURRENT_SOURCE_DIR}/drivers/itwoc
 
 )
 

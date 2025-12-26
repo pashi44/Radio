@@ -1,6 +1,6 @@
-menu "Radio drivers"
+menu "Radio  Custom   device drivers"
 
-    rsource "uartone/Kconfig"
-    rsource "itwoc/Kconfig"
+    # rsource "uartone/Kconfig"
+    # rsource "itwoc/Kconfig"
 
 endmenu

@@ -4,15 +4,14 @@
 #include <zephyr/drivers/uart.h>
 #include <zephyr/logging/log.h>
 
-#ifdef  CONFIG_RADIO_UART_INSTANCE
-#include "uartone.hpp"
-
-#endif // DEBUG
 
 
-#include "Binzitwoc.hpp"
-#define I2C_CONTROLLER_NODE DT_NODELABEL(i2c0_binz)
-static const struct device *i2c0_dev = DEVICE_DT_GET(I2C_CONTROLLER_NODE);
+
+
+
+
+
+
 
 #ifdef __cplusplus__
  extern "C" {
@@ -32,7 +31,6 @@ int main(void)
     while (true) {
 
 
-int ret = i2c_write(i2c0_dev, (const uint8_t*)i2c_data, strlen(i2c_data), 0x40);
 
         k_msleep(5);
     }

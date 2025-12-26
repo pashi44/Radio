@@ -1,20 +1,17 @@
 description: Custom I2C Controller Binding for ESP32 by Binz Vendor
 compatible: "binz,custom-i2c"
-include: espressif,esp32-i2c.yaml 
+include: [i2c-controller.yaml ,  base.yaml ] 
 
 properties:
   reg:
-    type: array
     required: true
-
-  "#address-cells":
+  clock-frequency:
     type: int
-    description: "Must be 1 cell for I2C 7-bit addressing."
-  "#size-cells":
-    type: int
-    description: "Must be 0 cells for I2C."
-child-binding:
-  properties:
-    custom-id:
-      type: string
-      description: A custom identifier for the I2C child device.
+    default: 100000
+    description: "I2C clock frequency in Hz."
+  sda-gpios:
+    type: phandle-array
+    required: true
+  scl-gpios:
+    type: phandle-array
+    required: true

@@ -1,5 +1,0 @@
-name: uartone
-
-build:
-  cmake: .
-  kconfig: Kconfig

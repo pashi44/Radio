@@ -1,51 +1,32 @@
 / {
-    // Defines aliases for easy referencing in application code
-    aliases {
-        serial1 = &uart1;
-    };
-    
 
-  #address-cells = <1>; 
-        #size-cells = <0>;
 
-    i2c0_binz: i2c-controller@3FF53000 {
+chosen {
+zephyr,console = &uart0;
+};
+
+
+    my_custom_i2c: custom_i2c@3ff53000 {
         compatible = "binz,custom-i2c";
+        reg = <0x3ff53000 0x1000>;
+
+    #address-cells = <1>;
+
+    #size-cells = <0>;
+
+
+
         status = "okay";
-        reg = <0x3FF53000 0x1000>;
+        clock-frequency = <400000>; // Fast mode
         
-        pinctrl-0 = <&i2c0_default>; 
-        pinctrl-names = "default";
-        #address-cells = <1>; 
-        #size-cells = <0>;
-      
-
-        };
+        sda-gpios = <&gpio0 21 GPIO_ACTIVE_HIGH>;
+        scl-gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>;
     };
+};
 
 
 
-    &uart0 {
-        compatible = "espressif,esp32-uart";
-        reg = <0x3ff40000 0x1000>;
-        status = "okay";
-        label = "serial-UART0";
-    };
 
-    &uart1 {
-        compatible = "espressif,esp32-uart";
-        reg = <0x3ff50000 0x1000>;
-        status = "okay";
-        label = "serial-UART1";
-        current-speed= <115200>;
-        pinctrl-0 = <&uart1_default>; // Assumes 'uart1_default' is defined elsewhere
-        pinctrl-names = "default";
-    };
-
-    &uart2 {
-        compatible = "espressif,esp32-uart";
-        reg = <0x3ff6e000 0x1000>;
-        status= "okay";
-        label = "serial-UART2";
-        pinctrl-0 = <&uart2_default>; // Assumes 'uart2_default' is defined elsewhere
-        pinctrl-names = "default";
-    };
+&i2c0 {
+    status = "disabled"; // Disable the default driver to use our custom one
+};

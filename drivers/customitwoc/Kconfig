@@ -1,0 +1,6 @@
+config RADIO_CUSTOM_ITWOC
+    bool "Custom Itwoc driver"
+    default n
+    depends on  I2C &&   GPIO
+    help
+      Enable the Custom Itwoc driver.

@@ -1,0 +1,4 @@
+name: "Custom Itwoc driver"
+build: 
+    cmake: .
+    kconfig: Kconfig

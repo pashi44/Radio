@@ -11,7 +11,7 @@ list(APPEND ZEPHYR_EXTRA_MODULES
 
 
 # ${CMAKE_CURRENT_SOURCE_DIR}/drivers/uartone 
-# ${CMAKE_CURRENT_SOURCE_DIR}/drivers/itwoc
+${CMAKE_CURRENT_SOURCE_DIR}/drivers/customitwoc
 
 )
 

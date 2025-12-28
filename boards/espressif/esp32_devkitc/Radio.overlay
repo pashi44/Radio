@@ -5,28 +5,57 @@ chosen {
 zephyr,console = &uart0;
 };
 
+aliases{
 
-    my_custom_i2c: custom_i2c@3ff53000 {
-        compatible = "binz,custom-i2c";
-        reg = <0x3ff53000 0x1000>;
-
-    #address-cells = <1>;
-
-    #size-cells = <0>;
-
-
-
-        status = "okay";
-        clock-frequency = <400000>; // Fast mode
-        
-        sda-gpios = <&gpio0 21 GPIO_ACTIVE_HIGH>;
-        scl-gpios = <&gpio0 22 GPIO_ACTIVE_HIGH>;
-    };
+    uart-0 = &uart0;
 };
 
 
+    binz_i2c_one: custom_i2c@3ff53000 {
+        compatible = "binz,custom-i2c";
+        reg = <0x3ff53000 0x1000>;
+    #address-cells = <1>;
+    #size-cells = <0>;
+        status = "okay";
+        clock-frequency = <400000 >  ;
+        sda-gpios = <&gpio0  12 GPIO_ACTIVE_HIGH>;
+        scl-gpios = <&gpio0 13 GPIO_ACTIVE_HIGH>;
+    };
+    
+    binz_i2c_two: custom_i2c@3ff67000 {
+        compatible = "binz,custom-i2c";
+        reg = <0x3ff67000 0x1000>;
+    #address-cells = <1>;
+    #size-cells = <0>;
+
+        status = "okay";
+
+        // clock-frequency = <400000>; // Fast mode
+
+        sda-gpios = <&gpio0 17 GPIO_ACTIVE_HIGH>;
+
+        scl-gpios = <&gpio0   16 GPIO_ACTIVE_HIGH>;
+
+    };
 
 
-&i2c0 {
-    status = "disabled"; // Disable the default driver to use our custom one
+
+};
+
+
+&i2c0 { status = "disabled"; };
+&i2c1 { status = "disabled"; };
+
+
+&uart0 {
+			compatible = "espressif,esp32-uart"; /* in zephyr/dts/xtensa/espressif/esp32/esp32_common.dtsi:229 */
+			reg = < 0x3ff40000 0x400 >;          /* in zephyr/dts/xtensa/espressif/esp32/esp32_common.dtsi:230 */
+			interrupts = < 0x22 0x0 0x0 >;       /* in zephyr/dts/xtensa/espressif/esp32/esp32_common.dtsi:231 */
+			interrupt-parent = < &intc >;        /* in zephyr/dts/xtensa/espressif/esp32/esp32_common.dtsi:232 */
+			clocks = < &clock 0x1 >;             /* in zephyr/dts/xtensa/espressif/esp32/esp32_common.dtsi:233 */
+			status = "okay";                     /* in zephyr/boards/espressif/esp32_devkitc/esp32_devkitc_procpu.dts:45 */
+			current-speed = < 0x1c200 >;         /* in zephyr/boards/espressif/esp32_devkitc/esp32_devkitc_procpu.dts:46 */
+			pinctrl-0 = < &uart0_default >;      /* in zephyr/boards/espressif/esp32_devkitc/esp32_devkitc_procpu.dts:47 */
+			pinctrl-names = "default";           /* in zephyr/boards/espressif/esp32_devkitc/esp32_devkitc_procpu.dts:48 */
+	
 };

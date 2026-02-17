@@ -1,0 +1,40 @@
+{
+  "projects": {
+    "Radio": {
+      "rel_path": "",
+      "name": "Radio",
+      "buildConfigs": {
+        "esp32build": {
+          "relBoardDir": "boards",
+          "relBoardSubDir": "../../boards/espressif/esp32_devkitc",
+          "board": "esp32_devkitc/esp32/procpu",
+          "name": "esp32build",
+          "westBuildArgs": "--sysbuild",
+          "westBuildCMakeArgs": "",
+          "confFiles": {
+            "config": [],
+            "extraConfig": [],
+            "overlay": [],
+            "extraOverlay": []
+          },
+          "runnerConfigs": {
+            "esp32": {
+              "runner": "esp32",
+              "name": "esp32",
+              "args": ""
+            }
+          }
+        }
+      },
+      "twisterConfigs": {},
+      "confFiles": {
+        "config": [],
+        "extraConfig": [],
+        "overlay": [],
+        "extraOverlay": [
+          "boards/espressif/esp32_devkitc/Radio.overlay"
+        ]
+      }
+    }
+  }
+}

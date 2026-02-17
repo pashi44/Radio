@@ -3,6 +3,7 @@
     aliases {
         serial1 = &uart1;
     };
+
     
 
   #address-cells = <1>; 
@@ -12,7 +13,7 @@
         compatible = "binz,custom-i2c";
         status = "okay";
         reg = <0x3FF53000 0x1000>;
-        
+         
         pinctrl-0 = <&i2c0_default>; 
         pinctrl-names = "default";
         #address-cells = <1>; 

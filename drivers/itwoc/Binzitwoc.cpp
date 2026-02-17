@@ -16,18 +16,14 @@ int binzitwoc_get_status(const struct device *dev)
 
 
 
-
-
-
-
-
-
 // --- Driver Initialization and Instantiation ---
 
 static  int binzitwoc_init(const struct device *dev)
 {
     const struct binzitwoc_config *config = 
         (const struct binzitwoc_config *)dev->config;
+
+    
 
 
     return 0;

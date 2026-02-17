@@ -1,5 +1,7 @@
 config   BINZ_ITWOC
     bool "Enable ItwoC Radio manual BINZ Driver"
+    depends on I2C
+    depends on GPIO
     default n
 
 

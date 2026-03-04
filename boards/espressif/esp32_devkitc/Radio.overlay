@@ -1,52 +1,43 @@
 / {
-    // Defines aliases for easy referencing in application code
-    aliases {
-        serial1 = &uart1;
-    };
+  
 
-    
+chosen{
 
-  #address-cells = <1>; 
-        #size-cells = <0>;
+    zephyr,console = &uart0;
+    zephyr,shell-uart = &uart0;
+    zephyr,flash-controller =  &flash;
+    zephyr,flash = &flash0;
+    zephhyr,code-partition = &slot0_partition;
 
-    i2c0_binz: i2c-controller@3FF53000 {
-        compatible = "binz,custom-i2c";
-        status = "okay";
-        reg = <0x3FF53000 0x1000>;
-         
-        pinctrl-0 = <&i2c0_default>; 
-        pinctrl-names = "default";
-        #address-cells = <1>; 
-        #size-cells = <0>;
-      
+};
+aliases{
 
-        };
-    };
+    serial1 = &uart0;
+    modem = &uart1;
+};
+
+};
+//alias 
+
+&uart1{
+status=  "okay";
+current-speed = <115200>;
+pinctrl-0 = <&uart1_default>;
+pinctrl-names = "modem-subsys-pins";
+};
+
+&pinctrl{
+
+uart1_default: uart1_default {
+
+group1{
+
+    pinmux = <UART1_TX_GPIO17>,
+    <UART1_RX_GPIO16>;
+};
+
+};
+
+};
 
 
-
-    &uart0 {
-        compatible = "espressif,esp32-uart";
-        reg = <0x3ff40000 0x1000>;
-        status = "okay";
-        label = "serial-UART0";
-    };
-
-    &uart1 {
-        compatible = "espressif,esp32-uart";
-        reg = <0x3ff50000 0x1000>;
-        status = "okay";
-        label = "serial-UART1";
-        current-speed= <115200>;
-        pinctrl-0 = <&uart1_default>; // Assumes 'uart1_default' is defined elsewhere
-        pinctrl-names = "default";
-    };
-
-    &uart2 {
-        compatible = "espressif,esp32-uart";
-        reg = <0x3ff6e000 0x1000>;
-        status= "okay";
-        label = "serial-UART2";
-        pinctrl-0 = <&uart2_default>; // Assumes 'uart2_default' is defined elsewhere
-        pinctrl-names = "default";
-    };

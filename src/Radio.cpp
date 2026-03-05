@@ -15,15 +15,49 @@
 #include "uartone.hpp"
 
 #endif // DEBUG
+static uint8_t uart_backend_receive_buf[512];
+
+static uint8_t uart_backend_transmit_buf[512];
+
+
 
 #ifdef CONFIG_BINZ_ITWOC
 #include "Binzitwoc.hpp"
 #define I2C_CONTROLLER_NODE DT_NODELABEL(i2c0_binz)
 static const struct device *i2c0_dev = DEVICE_DT_GET(I2C_CONTROLLER_NODE);
 #endif // DEBUG
-static struct modem_backend_uart uart_bakcend;
+LOG_MODULE_REGISTER(main, CONFIG_LOG_DEFAULT_LEVEL);
+static struct modem_backend_uart uart_backend;
 static struct  modem_pipe *modem_pipe;
 
+#define  UART_DEVICE  DT_NODELABEL(uart1)
+//OUR  UART mdoem cumminication
+const struct device *uart_modem_dev = DEVICE_DT_GET(UART_DEVICE); 
+
+#ifdef  MODEM_BACKEND_UART
+#endif // MODEM_BACKEND_UART
+
+
+/*
+//notes here
+modem_backend_uart has modem_pipe which acts a standard connector 
+for various high-level to low-level communication.
+modem_pipe inturn  has a pointer member  of  modem_pipe_api(that handles the
+open,close receive, transmit of data).
+
+*/
+const static struct modem_backend_uart_config uart_modem_config ={
+
+.uart = uart_modem_dev,
+.receive_buf = uart_backend_receive_buf,
+
+.receive_buf_size =sizeof( uart_backend_receive_buf),
+.transmit_buf = uart_backend_transmit_buf,
+.transmit_buf_size = sizeof(uart_backend_transmit_buf),
+
+
+
+};
 
 
 
@@ -31,7 +65,6 @@ static struct  modem_pipe *modem_pipe;
  extern "C" {
 #endif
 
-LOG_MODULE_REGISTER(main, CONFIG_LOG_DEFAULT_LEVEL);
 
 const char* i2c_data= "Data fro mbinz itwoc driver\n";
 
@@ -39,19 +72,16 @@ int main(void)
 {
   
 
+if(!device_is_ready(uart_modem_dev)) {
+
+LOG_ERR("Uart mdoem dev is not ready");
+return -ENODEV;
+
+}   
 
 
 
-
-
-
-
-
-// uartone_init();
-
-    
-
-
+modem_pipe = modem_backend_uart_init(&uart_backend, &uart_modem_config);
 
 
 
